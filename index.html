@@ -1,286 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<title>С Днём Рождения, Катюша!</title>
-<style>
-:root {
-  --bg: #ececec;        /* Светлый серый фон */
-  --card: #ffffff;      /* Карточка светлее фона */
-  --accent: #ff4081;    /* Акцент розовый */
-  --accent-2: #ffa500;  /* Второй акцент - оранжевый */
-  --text: #2b2b2b;      /* Основной текст тёмный */
-  --muted: #6b6b6b;     /* Вторичный текст */
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-}
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
+    <title>С Днём Рождения, Катюша!</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="card" id="card">
+        <div id="confetti-container"></div>
 
-html, body {height:100%; margin:0; padding:0;}
-body {
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  color: var(--text);
-  position: relative;
-  overflow: hidden;
-}
+        <header>
+          <div class="title">
+            <h1>С Днём Рождения, Катюша! 🥳</h1>
+            <p class="lead">Пусть этот день будет полон веселья и сюрпризов!</p>
+          </div>
+        </header>
 
-/* Стикеры ближе к карточке */
-body::before {
-  content: "🎉🎈🍰🥳🎁";
-  position: absolute;
-  font-size: 40px;
-  opacity: 0.15;
-  top: 5%;
-  left: 10%;
-  animation: float 15s linear infinite;
-}
-body::after {
-  content: "🎈🎉🥳🍭🍬";
-  position: absolute;
-  font-size: 50px;
-  opacity: 0.12;
-  bottom: 5%;
-  right: 10%;
-  animation: float2 18s linear infinite reverse;
-}
+        <div class="actions">
+          <button class="btn" id="celebrateBtn">Запустить конфетти</button>
+          <button class="btn ghost" id="downloadBtn">Тыкни - и увидишь</button>
+        </div>
 
-@keyframes float {
-  0% { transform: translate(0,0);}
-  50% { transform: translate(20px,-30px);}
-  100% { transform: translate(0,0);}
-}
-@keyframes float2 {
-  0% { transform: translate(0,0);}
-  50% { transform: translate(-30px,20px);}
-  100% { transform: translate(0,0);}
-}
+        <div class="grid">
+          <div class="left">
+            <div class="message">
+              <p>
+                Катюша, мои тебе поздравления, ты уже дошла до 17 годиков это ну
+                нифига себе конечно, так что я желаю счастья, любви, денег,
+                вайба, хороших отношений, хорошей учебы и очень круто и весело
+                провести свой последний 11 клас, отучиться тоже надо хорошо, но
+                воспоминания для нас сейчас важнее, ихихи поздравляю подружаня!!
+                🎉🎈
+              </p>
+            </div>
+            <div class="badges">
+              <div class="badge">#Лучшая подруга</div>
+              <div class="badge">#Мастер егермейстера</div>
+              <div class="badge">#Мастер мемов</div>
+              <div class="badge">#Лучшая профи по маникюру</div>
+              <div class="badge">#BatGirl</div>
+              <div class="badge">#Да я ахуенная</div>
+              <div class="badge">#BetMen❤️</div>
+              <div class="badge">#Комфорт</div>
+            </div>
 
-.wrap {width:100%; max-width:900px;}
-.card {
-  background: var(--card);
-  border-radius: 18px;
-  padding: 20px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  overflow: hidden;
-  position: relative;
-  z-index:1;
-}
+            <div class="citati">
+              <div class="badge">Да, речь затянулась, мы собрались чтоб поздравить Дмитрия, а нехуй его уже за что поздравлять</div>
+              <div class="badge">У меня как будто нимб над головой, я ангел?</div>
+            </div>
+          </div>
 
-header {
-  display:flex;
-  gap:16px;
-  align-items:center;
-  flex-wrap:wrap;
-  text-align:center;
-}
+          <aside class="right">
+            <div class="photo">
+              <img src="foto.jpg" alt="Ахуенная" />
+            </div>
+            <div class="notes">
+              <strong>Купон на день:</strong>
+              <p>Я несу тебе рандома и кринжа с коктейлями, готовься 😄</p>
+            </div>
+          </aside>
+        </div>
 
-.avatar {
-  width:80px;
-  height:80px;
-  border-radius:50%;
-  overflow:hidden;
-  flex:0 0 80px;
-  box-shadow:0 4px 12px rgba(255,64,129,0.2);
-  border:2px solid rgba(255,64,129,0.3);
-  margin:0 auto;
-}
-.avatar img {width:100%; height:100%; object-fit:cover;}
+        <footer>
+          <small>С пожеланиями, твой <strong>Ярик</strong> ❤️</small>
+          <small id="dateText"></small>
+        </footer>
+      </div>
+    </div>
 
-.title {flex:1; min-width:200px;}
-h1 {margin:0; font-size:24px; color:var(--accent);}
-p.lead {margin:6px 0 0; color:var(--muted); font-size:16px;}
-
-.actions {
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  justify-content:center;
-  margin-top:10px;
-}
-.btn {
-  background:var(--accent);
-  color:white;
-  padding:10px 14px;
-  border-radius:12px;
-  border:0;
-  cursor:pointer;
-  font-weight:600;
-  font-size:15px;
-}
-.btn.ghost {
-  background:transparent;
-  color:var(--accent);
-  border:2px solid rgba(255,64,129,0.3);
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:1fr 300px;
-  gap:20px;
-  margin-top:20px;
-}
-
-.left {
-  padding:14px;
-  border-radius:12px;
-  background: rgba(255,64,129,0.05);
-}
-.message {font-size:18px; line-height:1.5; color:var(--text);}
-.badges {
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:14px;
-}
-.badge {
-  background:var(--accent-2);
-  padding:8px 10px;
-  border-radius:10px;
-  font-weight:600;
-  font-size:14px;
-}
-
-.right {
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-.photo {
-  width:100%;
-  height:auto;
-  aspect-ratio:16/9;
-  border-radius:12px;
-  overflow:hidden;
-  background:#dcdcdc;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.photo img {width:100%; height:100%; object-fit:cover;}
-
-.notes {
-  background:#f5f5f5;
-  border-radius:10px;
-  padding:12px;
-  box-shadow: inset 0 1px 0 rgba(0,0,0,0.03);
-  font-size:15px;
-  color:var(--text);
-}
-
-footer {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  margin-top:18px;
-  gap:10px;
-  font-size:14px;
-}
-small {color:var(--muted);}
-.confetti-piece {position:absolute;width:10px;height:18px;opacity:0;transform-origin:center;pointer-events:none;}
-
-@media (max-width:768px){
-  .grid{grid-template-columns:1fr;}
-  h1{font-size:22px;}
-  .message{font-size:16px;}
-  .btn{width:100%;}
-  .right .photo{aspect-ratio:4/3;}
-}
-</style>
-</head>
-<body>
-<div class="wrap">
-<div class="card" id="card">
-<div id="confetti-container"></div>
-
-<header>
-<div class="title">
-  <h1>С Днём Рождения, Катюша! 🥳</h1>
-  <p class="lead">Пусть этот день будет полон веселья и сюрпризов!</p>
-</div>
-</header>
-
-<div class="actions">
-  <button class="btn" id="celebrateBtn">Запустить конфетти</button>
-  <button class="btn ghost" id="downloadBtn">Дорого / Не продаеться</button>
-</div>
-
-<div class="grid">
-<div class="left">
-  <div class="message">
-    <p>Катюша, мои тебе поздравления, ты уже дошла до 17 годиков это ну нифига себе конечно, так что я желаю счастья, любви, денег, вайба, хороших отношений, хорошей учебы и очень круто и весело провести свой последний 11 клас, отучиться тоже надо хорошо, но воспоминания для нас сейчас важнее, ихихи поздравляю подружаня!! 🎉🎈</p>
-  </div>
-  <div class="badges">
-    <div class="badge">#Лучшая подруга</div>
-    <div class="badge">#Мастер егермейстера</div>
-    <div class="badge">#Мастер мемов</div>
-    <div class="badge">#Лучшая профи по маникюру</div>
-    <div class="badge">#BatGirl</div>
-    <div class="badge">#Да я ахуенная</div>
-    <div class="badge">#BetMen❤️</div>
-    <div class="badge">#Комфорт</div>
-  </div>
-</div>
-
-<aside class="right">
-<div class="photo">
-  <img src="foto.jpg" alt="Ахуенная" />
-</div>
-<div class="notes">
-  <strong>Купон на день:</strong>
-  <p>Я несу тебе рандома и кринжа с коктейлями, готовься 😄</p>
-</div>
-</aside>
-</div>
-
-<footer>
-<small>С пожеланиями, твой <strong>Ярик</strong> ❤️</small>
-<small id="dateText"></small>
-</footer>
-</div>
-</div>
-
-<script>
-document.getElementById("dateText").textContent = "23.10.2025";
-
-const confettiContainer = document.getElementById("confetti-container");
-function makeConfetti(){
-  const colors = ["#ff4081","#ffa500","#7ef0c7","#7cc8ff","#c59bff"];
-  for(let i=0;i<70;i++){
-    const el=document.createElement("div");
-    el.className="confetti-piece";
-    el.style.left=Math.random()*100+"%";
-    el.style.top=(Math.random()*20-10)+"%";
-    el.style.background=colors[Math.floor(Math.random()*colors.length)];
-    el.style.transform="rotate("+Math.random()*360+"deg)";
-    el.style.opacity="1";
-    el.style.width=(6+Math.random()*12)+"px";
-    el.style.height=(8+Math.random()*18)+"px";
-    confettiContainer.appendChild(el);
-    animateConfetti(el);
-  }
-}
-function animateConfetti(el){
-  const dur=2000+Math.random()*2000;
-  el.animate([
-    {transform:el.style.transform+" translateY(0px) rotate(0deg)",opacity:1},
-    {transform:el.style.transform+" translateY("+(300+Math.random()*300)+"px) rotate(720deg)",opacity:0}
-  ],{duration:dur,easing:"cubic-bezier(.2,.8,.2,1)"});
-  setTimeout(()=>{if(el.parentNode) el.parentNode.removeChild(el);},dur+50);
-}
-document.getElementById("celebrateBtn").addEventListener("click",makeConfetti);
-document.getElementById("downloadBtn").addEventListener("click",()=>window.print());
-</script>
-</body>
+    <script src="./index.js"></script>
+  </body>
 </html>
-
-
-
-
-
-
-
-
