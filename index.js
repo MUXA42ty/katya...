@@ -40,14 +40,19 @@ function animateConfetti(el) {
     if (el.parentNode) el.parentNode.removeChild(el);
   }, dur + 50);
 }
+const citati = document.querySelector(".citati");
+citati.style.display = "none";
 function switchFunction() {
   const badges = document.querySelector(".badges");
   const mssg = document.querySelector(".message");
 
-  badges.style.display = "none";
-  mssg.style.display = "none";
+  const isHidden = badges.style.display === "none";
 
-  
+  citati.style.display = 'flex';
+
+  badges.style.display = isHidden ? "" : "none";
+  mssg.style.display = isHidden ? "" : "none";
+  citati.style.display = isHidden ? "none" : "";
 }
 document.getElementById("celebrateBtn").addEventListener("click", makeConfetti);
 document

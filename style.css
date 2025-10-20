@@ -168,6 +168,9 @@ p.lead {
   gap: 10px;
   margin-top: 14px;
 }
+/* .citati {
+  display: none;
+} */
 .badge {
   background: var(--accent-2);
   padding: 8px 10px;
